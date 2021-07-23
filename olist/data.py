@@ -6,12 +6,12 @@ class Olist:
     def get_data(self):
         """
         This function returns a Python dict.
-        Its keys should be 'sellers', 'orders', 'order_items' etc...
-        Its values should be pandas.DataFrame loaded from csv files
+        Its keys are 'sellers', 'orders', 'order_items' etc...
+        Its values are pandas.DataFrame loaded from csv files
         """
-        # Hint: Build csv_path as "absolute path" in order to call this method from anywhere.
-        # Hint2: Use __file__ as absolute path anchor to avoid displaying your username or computer-specific folder architecture.
-        # Hint3: Use os.path library to construct path independent of Unix vs. Windows specificities
+        # Builds csv_path as "absolute path" in order to call this method from anywhere.
+        # Uses __file__ as absolute path anchor to avoid displaying username or computer-specific folder architecture.
+        # Uses os.path library to construct path independent of Unix vs. Windows specificities
 
         root_dir = os.path.dirname(os.path.dirname(__file__))
         csv_path = os.path.join(root_dir, "data", "csv")
