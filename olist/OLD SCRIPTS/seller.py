@@ -26,7 +26,7 @@ class Seller:
     def get_seller_delay_wait_time(self):
         """
         Returns a DataFrame with:
-        'seller_id', 'delay_to_carrier', 'wait_time'
+        'seller_id', 'delay_to_carrier', 'wait_time_per_seller'
         """
         # Get data
         order_items = self.data['order_items'].copy()
@@ -64,7 +64,7 @@ class Seller:
         wait = ship.groupby('seller_id')\
                    .apply(order_wait_time)\
                    .reset_index()
-        wait.columns = ['seller_id', 'wait_time']
+        wait.columns = ['seller_id', 'wait_time_per_seller']
 
         df = delay.merge(wait, on='seller_id')
 
@@ -160,7 +160,7 @@ class Seller:
         """
         Returns a DataFrame with:
         'seller_id', 'seller_state', 'seller_city', 'delay_to_carrier',
-        'wait_time', 'share_of_five_stars', 'share_of_one_stars',
+        'wait_time_per_seller', 'share_of_five_stars', 'share_of_one_stars',
         'seller_review_score', 'n_orders', 'quantity,' 'date_first_sale', 'date_last_sale', 'sales'
         """
 
