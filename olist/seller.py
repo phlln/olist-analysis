@@ -64,8 +64,10 @@ class Seller:
         wait = ship.groupby('seller_id')\
                    .apply(order_wait_time)\
                    .reset_index()
+                   .rename(columns={'wait': 'seller_wait_time'})
         wait.columns = ['seller_id', 'seller_wait_time']
-
+        
+        
         df = delay.merge(wait, on='seller_id')
 
         return df
@@ -160,12 +162,9 @@ class Seller:
         """
         Returns a DataFrame with:
         'seller_id', 'seller_state', 'seller_city', 'delay_to_carrier',
-        'wait_time_per_seller', 'share_of_five_stars', 'share_of_one_stars',
+        'seller_wait_time', 'share_of_five_stars', 'share_of_one_stars',
         'seller_review_score', 'n_orders', 'quantity,' 'date_first_sale', 'date_last_sale', 'sales'
         """
-
-        
-
 
         training_set =\
             self.get_seller_features()\
