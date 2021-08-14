@@ -63,8 +63,9 @@ class Seller:
 
         wait = ship.groupby('seller_id')\
                    .apply(order_wait_time)\
-                   .reset_index()
-                   .rename(columns={'wait': 'seller_wait_time'})
+                   .reset_index()\
+                   .rename(columns={'wait_time': 'seller_wait_time'})
+        
         wait.columns = ['seller_id', 'seller_wait_time']
         
         
@@ -118,9 +119,10 @@ class Seller:
                         as_index=False).agg({'dim_is_one_star': 'mean',
                                              'dim_is_five_star': 'mean',
                                              'review_score': 'mean',
-                                             'cost_of_review': 'sum'})
+                                             'cost_of_review': 'sum'})\
+                        .rename(columns={'review_score':'seller_review_score'})
         reviews_df.columns = ['seller_id', 'share_of_one_stars',
-                      'share_of_five_stars', 'review_score', 'cost_of_reviews']
+                      'share_of_five_stars', 'seller_review_score', 'cost_of_reviews']
 
         return reviews_df
 
