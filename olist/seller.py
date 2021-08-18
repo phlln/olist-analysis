@@ -20,7 +20,7 @@ class Seller:
         """
         sellers = self.data['sellers'].copy() # Make a copy before using inplace=True so as to avoid modifying self.data
         sellers.drop('seller_zip_code_prefix', axis=1, inplace=True)
-        sellers.drop_duplicates(inplace=True) # There is multiple rows per seller
+        sellers.drop_duplicates(inplace=True) # There are multiple rows per seller
         return sellers
 
     def get_seller_delay_wait_time(self):
@@ -64,7 +64,7 @@ class Seller:
         wait = ship.groupby('seller_id')\
                    .apply(order_wait_time)\
                    .reset_index()\
-                   .rename(columns={'wait_time': 'seller_wait_time'})
+                   .rename(columns={'wait_time': 'seller_wait_time'}, inplace=True)
         
         wait.columns = ['seller_id', 'seller_wait_time']
         
@@ -98,7 +98,7 @@ class Seller:
     def get_review_score(self):
         """
         Returns a DataFrame with:
-        'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'review_score', 'cost_of_reviews'
+        'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'seller_review_score', 'review_cost_per_seller'
         """
         matching_table = self.matching_table
         orders_reviews = self.order.get_review_score()
@@ -119,10 +119,11 @@ class Seller:
                         as_index=False).agg({'dim_is_one_star': 'mean',
                                              'dim_is_five_star': 'mean',
                                              'review_score': 'mean',
-                                             'cost_of_review': 'sum'})\
-                        .rename(columns={'review_score':'seller_review_score'})
+                                             'cost_of_review': 'sum'})
+                        
+        reviews_df.rename(columns={'review_score': 'seller_review_score', 'cost_of_review': 'review_cost_per_seller'}, inplace=True)
         reviews_df.columns = ['seller_id', 'share_of_one_stars',
-                      'share_of_five_stars', 'seller_review_score', 'cost_of_reviews']
+                      'share_of_five_stars', 'seller_review_score', 'review_cost_per_seller']
 
         return reviews_df
 
@@ -183,6 +184,7 @@ class Seller:
                )
 
 
+
         # Add seller economics (revenues, profits)
         olist_monthly_fee = 80
         olist_sales_cut = 0.1
@@ -190,14 +192,15 @@ class Seller:
         training_set['revenues'] = training_set['months_on_olist'] * olist_monthly_fee\
             + olist_sales_cut * training_set['sales']
 
-        training_set['profits'] = training_set['revenues'] - training_set['cost_of_reviews']
+        training_set['profits'] = training_set['revenues'] - training_set['review_cost_per_seller']
 
         #Compute seller profits
         number_of_months_on_olist = (training_set.date_last_sale - training_set.date_first_sale) / np.timedelta64(1, 'M')
         training_set['months_on_olist'] = number_of_months_on_olist.map(lambda x: 1 if x < 1 else np.ceil(x))
 
         training_set['revenue'] = training_set.months_on_olist * 80 + training_set.sales * 0.1
-        training_set['profits_before_it_costs'] = training_set.revenue - training_set.cost_of_reviews
+        training_set['profits_before_it_costs'] = training_set.revenue - training_set.review_cost_per_seller
 
 
         return training_set
+        
