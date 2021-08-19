@@ -63,8 +63,7 @@ class Seller:
 
         wait = ship.groupby('seller_id')\
                    .apply(order_wait_time)\
-                   .reset_index()\
-                   .rename(columns={'wait_time': 'seller_wait_time'}, inplace=True)
+                   .reset_index()
         
         wait.columns = ['seller_id', 'seller_wait_time']
         
@@ -95,19 +94,24 @@ class Seller:
 
         return df
 
+
+
     def get_review_score(self):
         """
         Returns a DataFrame with:
         'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'seller_review_score', 'review_cost_per_seller'
         """
-        matching_table = self.matching_table
-        orders_reviews = self.order.get_review_score()
+        matching_table = self.matching_table.copy()
+        orders_reviews = self.order.get_review_score().copy()
 
+        
+        
+        
         # Since same seller can appear multiple times in the same order, create a (seller <> order) matching table
         matching_table = matching_table[['order_id', 'seller_id']].drop_duplicates()
-        reviews_df = matching_table.merge(orders_reviews, on='order_id')
+        df3 = matching_table.merge(orders_reviews, on='order_id')
 
-        reviews_df['cost_of_review'] = reviews_df.review_score.map({
+        df3['cost_of_review'] = df3.review_score.map({
             1: 100,
             2: 50,
             3: 40,
@@ -115,17 +119,18 @@ class Seller:
             5: 0
         })
 
-        reviews_df = reviews_df.groupby('seller_id',
+        df3 = df3.groupby('seller_id',
                         as_index=False).agg({'dim_is_one_star': 'mean',
                                              'dim_is_five_star': 'mean',
                                              'review_score': 'mean',
                                              'cost_of_review': 'sum'})
-                        
-        reviews_df.rename(columns={'review_score': 'seller_review_score', 'cost_of_review': 'review_cost_per_seller'}, inplace=True)
-        reviews_df.columns = ['seller_id', 'share_of_one_stars',
+            
+        df3.columns = ['seller_id', 'share_of_one_stars',
                       'share_of_five_stars', 'seller_review_score', 'review_cost_per_seller']
 
-        return reviews_df
+        return df3
+
+
 
     def get_quantity(self):
         """
@@ -143,8 +148,6 @@ class Seller:
         quantity.columns = ['seller_id', 'quantity']
         
         it_cost = n_orders
-        
-        
 
         result = n_orders.merge(quantity, on='seller_id')
         result['quantity_per_order'] = result['quantity'] / result['n_orders']
@@ -166,7 +169,8 @@ class Seller:
         Returns a DataFrame with:
         'seller_id', 'seller_state', 'seller_city', 'delay_to_carrier',
         'seller_wait_time', 'share_of_five_stars', 'share_of_one_stars',
-        'seller_review_score', 'n_orders', 'quantity,' 'date_first_sale', 'date_last_sale', 'sales'
+        'seller_review_score', 'n_orders', 'quantity', 'quantity_per_order', 'date_first_sale', 
+        'date_last_sale', 'sales', and `review_cost_per_seller`
         """
 
         training_set =\
@@ -176,31 +180,30 @@ class Seller:
                ).merge(
                 self.get_active_dates(), on='seller_id'
                ).merge(
-                self.get_review_score(), on='seller_id'
-               ).merge(
+                 self.get_review_score(), on='seller_id'
+                ).merge(
                 self.get_quantity(), on='seller_id'
                ).merge(
                 self.get_sales(), on='seller_id'
                )
 
 
+        # # Add seller economics (revenues, profits)
+        # olist_monthly_fee = 80
+        # olist_sales_cut = 0.1
 
-        # Add seller economics (revenues, profits)
-        olist_monthly_fee = 80
-        olist_sales_cut = 0.1
+        # training_set['revenues'] = training_set['months_on_olist'] * olist_monthly_fee\
+        #     + olist_sales_cut * training_set['sales']
 
-        training_set['revenues'] = training_set['months_on_olist'] * olist_monthly_fee\
-            + olist_sales_cut * training_set['sales']
+        # training_set['profits'] = training_set['revenues'] - training_set['review_cost_per_seller']
 
-        training_set['profits'] = training_set['revenues'] - training_set['review_cost_per_seller']
+        # #Compute seller profits
+        # number_of_months_on_olist = (training_set.date_last_sale - training_set.date_first_sale) / np.timedelta64(1, 'M')
+        # training_set['months_on_olist'] = number_of_months_on_olist.map(lambda x: 1 if x < 1 else np.ceil(x))
 
-        #Compute seller profits
-        number_of_months_on_olist = (training_set.date_last_sale - training_set.date_first_sale) / np.timedelta64(1, 'M')
-        training_set['months_on_olist'] = number_of_months_on_olist.map(lambda x: 1 if x < 1 else np.ceil(x))
-
-        training_set['revenue'] = training_set.months_on_olist * 80 + training_set.sales * 0.1
-        training_set['profits_before_it_costs'] = training_set.revenue - training_set.review_cost_per_seller
+        # training_set['revenue'] = training_set.months_on_olist * 80 + training_set.sales * 0.1
+        # training_set['profits_before_it_costs'] = training_set.revenue - training_set.review_cost_per_seller
 
 
-        return training_set
+        # return training_set
         

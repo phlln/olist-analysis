@@ -78,7 +78,7 @@ from olist.seller import Seller
 ```
 - `get_seller_features`: returns a DataFrame with: `'seller_id', 'seller_city', 'seller_state'`.
 - `get_seller_delay_wait_time`: returns a DataFrame with: `'seller_id', 'delay_to_carrier', 'seller_wait_time'`.
-- `get_review_score`: returns a DataFrame with: `'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'review_score'`.
+- `get_review_score`: returns a DataFrame with: `'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'seller_review_score'`.
 - `get_quantity`: returns a DataFrame with: `'seller_id', 'n_orders', 'quantity'`.
 - `get_training_data`: returns a DataFrame with: `seller_id, seller_state, seller_city, delay_to_carrier, seller_wait_time, share_of_five_stars, share_of_one_stars, seller_review_score, n_orders`.
 
