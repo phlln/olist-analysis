@@ -205,5 +205,5 @@ class Seller:
         # training_set['profits_before_it_costs'] = training_set.revenue - training_set.review_cost_per_seller
 
 
-        # return training_set
+        return training_set
         
