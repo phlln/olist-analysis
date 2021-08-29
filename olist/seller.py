@@ -7,7 +7,6 @@ from olist.order import Order
 class Seller:
 
     def __init__(self):
-        # Import only data once
         olist = Olist()
         self.data = olist.get_data()
         self.matching_table = olist.get_matching_table()
@@ -67,7 +66,6 @@ class Seller:
         
         wait.columns = ['seller_id', 'seller_wait_time']
         
-        
         df = delay.merge(wait, on='seller_id')
 
         return df
@@ -76,10 +74,9 @@ class Seller:
         """
         Returns a DataFrame with: 'seller_id', 'date_first_sale', 'date_last_sale'
         """
-
         orders = self.data['orders'][['order_id', 'order_approved_at']].copy()
 
-        # create two new columns in view of aggregating
+        # Create two new columns in view of aggregating
         orders.loc[:,'date_first_sale'] = pd.to_datetime(orders['order_approved_at'])
         orders['date_last_sale'] = orders['date_first_sale']
 
@@ -94,8 +91,6 @@ class Seller:
 
         return df
 
-
-
     def get_review_score(self):
         """
         Returns a DataFrame with:
@@ -104,14 +99,11 @@ class Seller:
         matching_table = self.matching_table.copy()
         orders_reviews = self.order.get_review_score().copy()
 
-        
-        
-        
         # Since same seller can appear multiple times in the same order, create a (seller <> order) matching table
         matching_table = matching_table[['order_id', 'seller_id']].drop_duplicates()
-        df3 = matching_table.merge(orders_reviews, on='order_id')
+        df = matching_table.merge(orders_reviews, on='order_id')
 
-        df3['cost_of_review'] = df3.review_score.map({
+        df['cost_of_review'] = df.review_score.map({
             1: 100,
             2: 50,
             3: 40,
@@ -119,18 +111,16 @@ class Seller:
             5: 0
         })
 
-        df3 = df3.groupby('seller_id',
+        df = df.groupby('seller_id',
                         as_index=False).agg({'dim_is_one_star': 'mean',
                                              'dim_is_five_star': 'mean',
                                              'review_score': 'mean',
                                              'cost_of_review': 'sum'})
             
-        df3.columns = ['seller_id', 'share_of_one_stars',
+        df.columns = ['seller_id', 'share_of_one_stars',
                       'share_of_five_stars', 'seller_review_score', 'review_cost_per_seller']
 
-        return df3
-
-
+        return df
 
     def get_quantity(self):
         """
@@ -146,9 +136,7 @@ class Seller:
 
         quantity = matching_table.groupby('seller_id', as_index=False).agg({'order_id': 'count'})
         quantity.columns = ['seller_id', 'quantity']
-        
-        it_cost = n_orders
-
+    
         result = n_orders.merge(quantity, on='seller_id')
         result['quantity_per_order'] = result['quantity'] / result['n_orders']
         return result

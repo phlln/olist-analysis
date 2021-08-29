@@ -49,8 +49,3 @@ class Olist:
 
         return matching_table
 
-    def ping(self):
-        """
-        You call ping I print pong.
-        """
-        print("pong")
