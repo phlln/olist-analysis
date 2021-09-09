@@ -174,3 +174,4 @@ class Seller:
                ).merge(
                 self.get_sales(), on='seller_id'
                )
+        return training_set
