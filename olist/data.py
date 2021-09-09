@@ -13,9 +13,10 @@ class Olist:
         # Uses __file__ as absolute path anchor to avoid displaying username or computer-specific folder architecture.
         # Uses os.path library to construct path independent of Unix vs. Windows specificities
 
-        root_dir = os.path.dirname(os.path.dirname(__file__))
-        csv_path = os.path.join(root_dir, "data", "csv")
-
+        #root_dir = os.path.dirname(os.path.dirname(__file__))
+        #csv_path = os.path.join(root_dir, "data", "csv")
+        csv_path = '../../olist-analysis/data/csv'
+    
         file_names = [f for f in os.listdir(csv_path) if f.endswith(".csv")]
 
         key_names = [

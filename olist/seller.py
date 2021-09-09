@@ -174,24 +174,3 @@ class Seller:
                ).merge(
                 self.get_sales(), on='seller_id'
                )
-
-
-        # # Add seller economics (revenues, profits)
-        # olist_monthly_fee = 80
-        # olist_sales_cut = 0.1
-
-        # training_set['revenues'] = training_set['months_on_olist'] * olist_monthly_fee\
-        #     + olist_sales_cut * training_set['sales']
-
-        # training_set['profits'] = training_set['revenues'] - training_set['review_cost_per_seller']
-
-        # #Compute seller profits
-        # number_of_months_on_olist = (training_set.date_last_sale - training_set.date_first_sale) / np.timedelta64(1, 'M')
-        # training_set['months_on_olist'] = number_of_months_on_olist.map(lambda x: 1 if x < 1 else np.ceil(x))
-
-        # training_set['revenue'] = training_set.months_on_olist * 80 + training_set.sales * 0.1
-        # training_set['profits_before_it_costs'] = training_set.revenue - training_set.review_cost_per_seller
-
-
-        return training_set
-        
