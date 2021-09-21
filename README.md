@@ -1,13 +1,43 @@
 # Olist E-commerce Platform | Review Score Data Analysis
 
 This repo is a collection of Jupyter Notebooks sharing my data analysis for Olist, a Brazilian e-commerce platform. The [dataset](https://www.kaggle.com/olistbr/brazilian-ecommerce) contains information on 100k orders from 2016 to
-2018 made publicly available by the company on Kaggle.
+2018 made publicly available by Olist on Kaggle.
 
-As part of an individual project for **Le Wagon | Data Science Bootcamp**, the analysis, conclusions, and recommendations are framed as a response to a prompt by the CEO:
+As part of an individual project for **Le Wagon | Data Science Bootcamp**, the analysis, conclusions, and recommendations are framed as an analytics team response to a prompt by the CEO:
 
 **CEO Question:**
 
 *How do we increase customer satisfaction (so as to increase profit margins) while maintaining a healthy order volume?*
+
+In order to address this question, we break this question down into 2 parts:
+
+**1. What factors influence customer satisfaction?** 
+
+**2. What impact does adjusting those factors have on profits margins and order volume?**
+
+***Part 1***
+
+To understand more clearly what factors influence customer satisfaction, we first perform exploratory data analysis on the Orders and Sellers datasets by examining the characterstics of the data, distributions, and correlations. Then, we run linear regression models to identify which features have the largest impact on customer review scores. To corroborate our findings, we re-frame our analysis to run logistic regression models on the data. 
+
+**Detailed Analysis for part 1 can be found at the following notebooks:**
+- [Orders Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Orders%20Data%20Analysis.ipynb)
+- [Sellers Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Sellers%20Data%20Analysis.ipynb)
+
+***Supplementary Notebooks showing Custom Class & Method Implementation***
+- [Olist Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Olist%20Class%20-%20Method%20Implementation.ipynb)
+- [Order Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Order%20Class%20-%20Method%20Implementation.ipynb)
+- [Seller Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Seller%20Class%20-%20Method%20Implementation.ipynb)
+
+***Part 2***
+
+Given our findings from part 1, we assess which factors (if any) can be adjusted in the short term and ultimately propose removing
+poor-performing sellers from the platform. We then move forward in our analysis by evaluating the impact on revenues, costs, order volumes, and profits. Finally, we summarize our findings and make a recommendation to the CEO.  
+
+**Detailed Analysis for part 2 can be found at the following notebook:**
+
+
+
+
 
 In order to address this question, we break this problem down into 2 parts: 
 1) First try to understand which factors have an impact on customer satisfaction (as measured by customer review scores). 
@@ -67,14 +97,9 @@ uncover more explicitly the specific reasons for customer dissatisfaction.
 ## Notebooks
 
 ### Analysis & Recommendations
-- [Orders Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Orders%20Data%20Analysis.ipynb)
-- [Sellers Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Sellers%20Data%20Analysis.ipynb)
-- [CEO Response & Recommendations](https://github.com/phlln/olist-analysis/blob/main/notebooks/CEO%20Recommendations.ipynb)
 
-### Custom Class & Method Implementation
-- [Olist Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Olist%20Class%20-%20Method%20Implementation.ipynb)
-- [Order Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Order%20Class%20-%20Method%20Implementation.ipynb)
-- [Seller Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Seller%20Class%20-%20Method%20Implementation.ipynb)
+
+
 
 
 
