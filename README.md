@@ -21,11 +21,6 @@ To understand more clearly what factors influence customer satisfaction (as meas
 - [Orders Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Orders%20Data%20Analysis.ipynb)
 - [Sellers Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Sellers%20Data%20Analysis.ipynb)
 
-***Supplementary Notebooks showing Custom Class & Method Implementation:***
-- [Olist Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Olist%20Class%20-%20Method%20Implementation.ipynb)
-- [Order Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Order%20Class%20-%20Method%20Implementation.ipynb)
-- [Seller Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Seller%20Class%20-%20Method%20Implementation.ipynb)
-
 **PART 2**
 
 Given our findings from Part 1, we assess which factors (if any) can be adjusted in the short term and ultimately propose removing poor-performing sellers from the platform. We then move forward in our analysis by evaluating its impact on revenues, costs, order volumes, and profits. We conclude with a summary of our findings and make recommendations to the CEO.
@@ -33,6 +28,11 @@ Given our findings from Part 1, we assess which factors (if any) can be adjusted
 **Detailed Analysis (including an Executive Summary) for Part 2:**
 
 - [Profit Analysis & Recommendations](https://github.com/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb)
+
+***Supplementary Notebooks showing Custom Class & Method Implementation:***
+- [Olist Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Olist%20Class%20-%20Method%20Implementation.ipynb)
+- [Order Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Order%20Class%20-%20Method%20Implementation.ipynb)
+- [Seller Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Seller%20Class%20-%20Method%20Implementation.ipynb)
 
 ## Requirements
 - Python 3.6
