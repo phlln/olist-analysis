@@ -35,13 +35,12 @@ Given our findings from Part 1, we assess which factors (if any) can be adjusted
 - [Seller Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Seller%20Class%20-%20Method%20Implementation.ipynb)
 
 ## Requirements
-- Python 3.6
-- Jupyter Notebook
+- [Python 3.8.6](https://www.python.org/downloads/release/python-386/)
+- [Jupyter Notebook](http://jupyter.org/)
 
 ## Dependencies
-- pandas
-- numpy
-- seaborn 
-- matplotlib
-- statsmodels
-- math
+- [pandas](https://pandas.pydata.org/)
+- [numpy](http://www.numpy.org/)
+- [seaborn](https://seaborn.pydata.org/) 
+- [matplotlib](https://matplotlib.org/)
+- [statsmodels](https://www.statsmodels.org/)
