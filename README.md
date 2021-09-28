@@ -44,3 +44,6 @@ Given our findings from Part 1, we assess which factors (if any) can be adjusted
 - [seaborn](https://seaborn.pydata.org/) 
 - [matplotlib](https://matplotlib.org/)
 - [statsmodels](https://www.statsmodels.org/)
+
+## License
+- [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
