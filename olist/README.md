@@ -2,7 +2,7 @@
 
 This folder contains Olist Classes that handle the logic of data cleaning for our project.
 
-Example to return data as a Python dictionnary using the `get_data` method from the `Olist` class:
+Example to return data as a Python dictionary using the `get_data` method from the `Olist` class:
 
 ```python
 from olist.data import Olist
