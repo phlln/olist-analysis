@@ -29,6 +29,10 @@ Given our findings from Part 1, we assess which factors (if any) can be adjusted
 
 - [Profit Analysis & Recommendations](https://github.com/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb)
 
+**Data Visualizations (Tableau)**
+- [Story](https://public.tableau.com/app/profile/phil.lin/viz/OlistPoor-performingSellersSTORY/Poor-performersOutsizedImpact)
+- [Dashboard](https://public.tableau.com/app/profile/phil.lin/viz/OlistPoor-performingSellersDASHBOARD/InteractiveDash)
+
 ***Supplementary Notebooks showing Custom Class & Method Implementation:***
 - [Olist Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Olist%20Class%20-%20Method%20Implementation.ipynb)
 - [Order Class](https://github.com/phlln/olist-analysis/blob/main/notebooks/Order%20Class%20-%20Method%20Implementation.ipynb)
