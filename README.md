@@ -8,7 +8,7 @@ Low customer satisfaction can have direct and indirect costs (e.g., refunds, cus
 In this project, I analyze a dataset containing 100k orders from Olist to figure out *how the company can increase customer satisfaction (so as to increase profit margins) while still maintaining a healthy order volume*. This repo contains a collection of Jupyter Notebooks documenting my analysis. 
 
 ### **Analysis (with Executive Summary)**
-- [Profit Analysis & Recommendations](https://nbviewer.org/github/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb?flush_cache=True) (Jupyter Notebook)
+- [**Profit Analysis & Recommendations**](https://nbviewer.org/github/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb?flush_cache=True) (Jupyter Notebook)
 
 
 ### **Presentation & Dashboard**
