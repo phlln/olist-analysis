@@ -7,11 +7,11 @@ Low customer satisfaction can have direct and indirect costs (e.g., refunds, cus
 
 In this project, I analyze a dataset containing 100k orders from Olist to figure out *how the company can increase customer satisfaction (so as to increase profit margins) while still maintaining a healthy order volume*. This repo contains a collection of Jupyter Notebooks documenting my analysis. 
 
-**Analysis (with Executive Summary)**
-- [Profit Analysis & Recommendations](https://nbviewer.org/github/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb?flush_cache=True)
+### **Analysis (with Executive Summary)**
+- [Profit Analysis & Recommendations](https://nbviewer.org/github/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb?flush_cache=True) (Jupyter Notebook)
 
 
-**Presentation & Dashboard**
+### **Presentation & Dashboard**
 ![olist_presentation_preview](./images/olist_presentation_preview_cost_curve.jpg)
 
 - [**Presentation**](https://public.tableau.com/app/profile/phil.lin/viz/OlistPoor-performingSellersSTORY/Poor-performersOutsizedImpact) (Tableau)
@@ -33,7 +33,7 @@ I break this question down into 2 parts:
 
 **PART 1**
 
-To understand more clearly what factors influence customer satisfaction (as measured by review scores), we first perform exploratory data analysis on the Orders and Sellers datasets by examining the characteristics of the data, distributions, and correlations. Then, we run linear regression models to identify which features have the largest impact on customer review scores. To corroborate our findings, we also re-frame our analysis to run logistic regression models on the data. 
+To understand more clearly what factors influence customer satisfaction (as measured by review scores), I first perform exploratory data analysis using Python and then examine the characteristics of the data, distributions, and correlations. Next, I run linear regression models to identify which features have the largest impact on customer review scores. To corroborate these findings, I re-frame the analysis so that we can also run logistic regression models on the data.
 
 **Detailed Analyses for Part 1:**
 - [Orders Data Analysis](https://github.com/phlln/olist-analysis/blob/main/notebooks/Orders%20Data%20Analysis.ipynb)
@@ -41,7 +41,7 @@ To understand more clearly what factors influence customer satisfaction (as meas
 
 **PART 2**
 
-Given our findings from Part 1, we assess which factors (if any) can be adjusted in the short term and ultimately propose removing poor-performing sellers from the platform. We then move forward in our analysis by evaluating its impact on revenues, costs, order volumes, and profits. We conclude with a summary of our findings and make recommendations to the CEO.
+My approach is to first look for achievable gains that can be implemented in the short term. Given the findings from Part 1, I  explore the impact of removing “poor-quality sellers” who have garnered enough bad review scores to negatively impact both profit margins and Olist’s brand. I conclude with a summary of the findings and my recommendations.
 
 **Detailed Analysis (including an Executive Summary) for Part 2:**
 
