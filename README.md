@@ -1,12 +1,30 @@
-# Olist E-commerce Platform | Data Analysis
+![cover_image](./images/olist_dream_money_1000x445.jpg)
 
-This repo is a collection of Jupyter Notebooks sharing my data analysis for **Olist**, a Brazilian e-commerce platform. The [dataset](https://www.kaggle.com/olistbr/brazilian-ecommerce) contains information on 100k orders from 2016 to 2018 made publicly available by **Olist** on Kaggle.
+# Introduction
+Low customer satisfaction can have direct and indirect costs (e.g., refunds, customer support, bad word-of-mouth, etc.). Especially with online platforms displaying ratings for sellers or products, these negative online reviews can have long-lasting and outsized effects on the bottom line and brand. 
 
-As part of an individual project for **Le Wagon | Data Science Bootcamp**, the analysis, conclusions, and recommendations are framed as an analytics team responding to a prompt by the CEO.
+**[Olist](https://olist.com/pt-br/)** is a rapidly growing Brazilian e-commerce platform that connects small merchants to major online regional marketplaces and offers sellers an integrated solution such as fulfillment, customer support, and payment services. 
 
-***CEO QUESTION:*** *How do we increase customer satisfaction (so as to increase profit margins) while maintaining a healthy order volume?*
+In this project, I analyze a dataset containing 100k orders from Olist to figure out *how the company can increase customer satisfaction (so as to increase profit margins) while still maintaining a healthy order volume*. This repo contains a collection of Jupyter Notebooks documenting my analysis. 
 
-In order to address this question, we break it down into 2 parts:
+**Analysis (with Executive Summary)**
+- [Profit Analysis & Recommendations](https://nbviewer.org/github/phlln/olist-analysis/blob/main/notebooks/Profit%20Analysis%20%26%20Recommendations.ipynb?flush_cache=True)
+
+
+**Presentation & Dashboard**
+![olist_presentation_preview](./images/olist_presentation_preview_cost_curve.jpg)
+
+- [**Presentation**](https://public.tableau.com/app/profile/phil.lin/viz/OlistPoor-performingSellersSTORY/Poor-performersOutsizedImpact) (Tableau)
+- [**Dashboard**](https://public.tableau.com/app/profile/phil.lin/viz/OlistPoor-performingSellersDASHBOARD/InteractiveDash) (Tableau)
+
+
+
+
+# Analysis 📊 
+
+***QUESTION:*** *How do we increase customer satisfaction (so as to increase profit margins) while maintaining a healthy order volume?*
+
+I break this question down into 2 parts:
 
 *1. What factors influence customer satisfaction?*
 
